@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Reflection Dashboard</title>
+    <!-- Importing the same tech/monospace font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Same dark theme palette */
+            --bg-color: #232323;      
+            --card-bg: #2a2a2a;       
+            --text-main: #e0e0e0;     
+            --text-muted: #888888;    
+            --accent-blue: #3b82f6;   
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            color: var(--text-main);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* --- Row 1: Metrics --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .metric-card:hover {
+            border-color: var(--accent-blue);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* --- Row 2: Text Analysis --- */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        .card-header {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+        }
+
+        .list-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .highlight-pill {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid, .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- ROW 1: Calculated Metrics from CSV -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Avg Engagement</div>
+                <div class="metric-value" style="color: var(--accent-green);">4.4 / 5.0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Avg Satisfaction</div>
+                <div class="metric-value" style="color: var(--accent-blue);">4.4 / 5.0</div>
+            </div>
+        </div>
+
+        <!-- ROW 2: Qualitative Feedback -->
+        <div class="analysis-grid">
+            
+            <!-- What they enjoyed -->
+            <div class="content-card">
+                <div class="card-header">
+                    <span>★</span> WHAT STUDENTS ENJOYED
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Practical Workshops</span>
+                    <div>"VM workshop and clothes set on Manikin"</div>
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Digital & AI</span>
+                    <div>"Creating websites using AI in less than 30 minutes"</div>
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Real-World Skills</span>
+                    <div>"Learning how to address a problem as a Consultant"</div>
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Immersion</span>
+                    <div>"The office tour, the case study activity"</div>
+                </div>
+            </div>
+
+            <!-- What stood out -->
+            <div class="content-card">
+                <div class="card-header">
+                    <span>⚡</span> WHAT STOOD OUT
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Student Energy</span>
+                    <span class="quote">"The students came with energy, and they are ready and well prepared."</span>
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Stakeholder Care</span>
+                    <span class="quote">"Management team from Nafis stood out... demonstrated how much they genuinely care."</span>
+                </div>
+                <div class="list-item">
+                    <span class="highlight-pill">Resilience</span>
+                    <span class="quote">"Despite lack of access to laptops... they still engage and show interest."</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
