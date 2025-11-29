@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPI Dashboard Embed</title>
+    <!-- Importing a tech/monospace font to match the dashboard aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colors extracted from the dashboard image */
+            --bg-color: transparent;  /* Changed to transparent to blend with dashboard */
+            --card-bg: #232323;       /* Slightly lighter for contrast */
+            --text-main: #e0e0e0;     /* Light grey text */
+            --text-muted: #888888;    /* Muted labels */
+            --accent-blue: #3b82f6;   /* The bright blue from the charts/buttons */
+            --accent-hover: #60a5fa;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Prevent scrollbars in embed */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns exactly */
+            gap: 1.5rem;
+        }
+
+        .kpi-card {
+            background-color: transparent; /* Blends with background */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem 1.5rem; /* Increased top/bottom padding for balance */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center;     /* Center horizontally */
+            text-align: center;      /* Center text */
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--accent-blue);
+            background-color: rgba(59, 130, 246, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* The small header label (e.g. "STUDENTS") */
+        .kpi-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* The big number */
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            /* Removed bottom margin since there are no elements below */
+            margin-bottom: 0; 
+        }
+
+        /* Responsive adjustments for smaller Notion columns */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Stack vertically on small screens */
+                gap: 1rem;
+            }
+            
+            .kpi-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Block 1: Students -->
+        <div class="kpi-card">
+            <div class="kpi-label"># of Students</div>
+            <div class="kpi-value">64</div>
+        </div>
+
+        <!-- Block 2: Companies -->
+        <div class="kpi-card">
+            <div class="kpi-label"># of Companies</div>
+            <div class="kpi-value">6</div>
+        </div>
+
+        <!-- Block 3: Schools -->
+        <div class="kpi-card">
+            <div class="kpi-label"># of Schools</div>
+            <div class="kpi-value">3</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
